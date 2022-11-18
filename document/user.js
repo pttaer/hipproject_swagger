@@ -503,7 +503,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 /**
  * @swagger
- * /api/user/getbyid/{id}:
+ * /api/user/getbyid:
  *  get:
  *      description: Use to request all user id
  *      tags: [User]
@@ -529,7 +529,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/user/getbyemail:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to get user by email
  *      tags: [User]
  *      responses:
  *          '200':
@@ -540,7 +540,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/user/getalluser:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to get all users in the database
  *      tags: [User]
  *      responses:
  *          '200':
@@ -557,7 +557,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/user/create:
  *  post:
- *      description: Use to request all user id
+ *      description: Use to create a user
  *      tags: [User]
  *      responses:
  *          '200':
@@ -568,7 +568,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/user/update:
  *  put:
- *      description: Use to request all user id
+ *      description: Use to update a user profile
  *      tags: [User]
  *      responses:
  *          '200':
