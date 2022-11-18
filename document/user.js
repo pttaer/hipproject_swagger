@@ -246,11 +246,24 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/prj/getbyid:
  *  get:
- *      description: Use to request a user by id
+ *      description: Use to request a project by id
  *      tags: [Project]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the project Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Project'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
@@ -274,7 +287,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/prj/admingetall:
  *  get:
- *      description: Use to request all project 
+ *      description: Use to request all project by admin
  *      tags: [Project]
  *      responses:
  *          '200':
@@ -291,62 +304,99 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/prj/getbyuser:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to request all project of the user id
  *      tags: [Project]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the project user Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Project'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
  * @swagger
  * /api/prj/sortdesc:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to request all project in sorted descending
  *      tags: [Project]
  *      responses:
  *          '200':
  *              description: A successful response
+ *      content:
+ *          application/json:
+ *          schema:
+ *              type: array
+ *              items:
+ *                  ref: '#/components/schemas/Project'
  */
 
 /**
  * @swagger
  * /api/prj/sortasc:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to request all project in sorted ascending
  *      tags: [Project]
  *      responses:
  *          '200':
  *              description: A successful response
+ *      content:
+ *          application/json:
+ *          schema:
+ *              type: array
+ *              items:
+ *                  ref: '#/components/schemas/Project'
  */
 
 /**
  * @swagger
  * /api/prj/search:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to search for a project
  *      tags: [Project]
  *      responses:
  *          '200':
  *              description: A successful response
+ *      content:
+ *          application/json:
+ *          schema:
+ *              type: array
+ *              items:
+ *                  ref: '#/components/schemas/Project'
  */
 
 /**
  * @swagger
  * /api/prj/searchName:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to search project by name
  *      tags: [Project]
  *      responses:
  *          '200':
  *              description: A successful response
+ *      content:
+ *          application/json:
+ *          schema:
+ *              type: array
+ *              items:
+ *                  ref: '#/components/schemas/Project'
  */
 
 /**
  * @swagger
  * /api/prj/create:
  *  post:
- *      description: Use to request all user id
+ *      description: Use to create a new project
  *      tags: [Project]
  *      responses:
  *          '200':
@@ -357,7 +407,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/prj/update:
  *  put:
- *      description: Use to request all user id
+ *      description: Update a project
  *      tags: [Project]
  *      responses:
  *          '200':
@@ -368,33 +418,72 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/prj/approve:
  *  put:
- *      description: Use to request all user id
+ *      description: Make project status to approved
  *      tags: [Project]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the project Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Project'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
  * @swagger
  * /api/prj/decline:
  *  put:
- *      description: Use to request all user id
+ *      description: Make project status to declined
  *      tags: [Project]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the project Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Project'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
  * @swagger
  * /api/prj/delete:
  *  delete:
- *      description: Use to request all user id
+ *      description: Delete a project
  *      tags: [Project]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the project Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Project'
+ *          '400':
+ *              description: The user was not found
  */
 
 
@@ -403,18 +492,31 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/appl/getbyid:
  *  get:
- *      description: Use to request all user id
+ *      description: get application by id
  *      tags: [Application]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the application's Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Application'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
  * @swagger
  * /api/appl/getall:
  *  get:
- *      description: Use to request all all applications
+ *      description: Use to request all applications
  *      tags: [Application]
  *      responses:
  *          '200':
@@ -431,11 +533,24 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/appl/getallappl:
  *  get:
- *      description: Use to request all all applications
+ *      description: Use to request all applications from a user
  *      tags: [Application]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the application's Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Application'
+ *          '400':
+ *              description: The user was not found
  *      content:
  *          application/json:
  *          schema:
@@ -448,18 +563,31 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/appl/getallrc:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to request all recieved application from the other user
  *      tags: [Application]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the application's Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Application'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
  * @swagger
  * /api/appl/create:
  *  post:
- *      description: Use to request all user id
+ *      description: Use to create a new application
  *      tags: [Application]
  *      responses:
  *          '200':
@@ -470,33 +598,72 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/appl/accept:
  *  put:
- *      description: Use to request all user id
+ *      description: Use to accept an application
  *      tags: [Application]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the application's Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Application'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
  * @swagger
  * /api/appl/reject:
  *  put:
- *      description: Use to request all user id
+ *      description: Use to reject an application
  *      tags: [Application]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the application's Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Application'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
  * @swagger
  * /api/appl/delete:
  *  delete:
- *      description: Use to request all user id
+ *      description: use to delete application
  *      tags: [Application]
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the application's Id
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/Application'
+ *          '400':
+ *              description: The user was not found
  */
 
 
@@ -505,9 +672,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  * @swagger
  * /api/user/getbyid:
  *  get:
- *      description: Use to request all user id
+ *      description: Use to get user by id
  *      tags: [User]
- *      parameter:
+ *      parameters:
  *          - in: path
  *            name: id
  *            schema:
@@ -531,9 +698,22 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
  *  get:
  *      description: Use to get user by email
  *      tags: [User]
+ *      parameters:
+ *          - in: path
+ *            name: email
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the user email
  *      responses:
  *          '200':
  *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                         ref: '#/components/schemas/User'
+ *          '400':
+ *              description: The user was not found
  */
 
 /**
